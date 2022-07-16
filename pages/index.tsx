@@ -35,7 +35,7 @@ export default function Home({ posts }: Props) {
         </div>
 
         <img
-          className="hidden h-32 md:inline-flex lg:h-full"
+          className="hidden object-cover h-32 md:inline-flex lg:h-full"
           src="https://i.pinimg.com/564x/00/b3/ed/00b3edcff0577a14ca0355e160b02122.jpg"
           alt=""
         />
