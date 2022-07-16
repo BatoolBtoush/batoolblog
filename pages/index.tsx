@@ -42,19 +42,27 @@ export default function Home({ posts }: Props) {
       </div>
 
       {/* posts */}
-      <div className='grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6'>
+      <div className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6">
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
-            <div className='overflow-hidden border rounded-lg cursor-pointer group'>
-              <img src={urlFor(post.mainImage).url()!} alt=""  className='object-cover w-full transition-transform duration-200 ease-in-out h-60 group-hover:scale-105' />
-              <div className='flex justify-between p-5 bg-white'>
+            <div className="overflow-hidden border rounded-lg cursor-pointer group">
+              <img
+                src={urlFor(post.mainImage).url()!}
+                alt=""
+                className="object-cover w-full transition-transform duration-200 ease-in-out h-60 group-hover:scale-105"
+              />
+              <div className="flex justify-between p-5 bg-white">
                 <div>
-                  <p className='text-lg font-bold'>{post.title}</p>
-                  <p className='text-xs'>
+                  <p className="text-lg font-bold">{post.title}</p>
+                  <p className="text-xs">
                     {post.description} by {post.author.name}
                   </p>
                 </div>
-                <img src={urlFor(post.author.image).url()!} alt="" className='w-12 h-12 rounded-full' />
+                <img
+                  src={urlFor(post.author.image).url()!}
+                  alt=""
+                  className="w-12 h-12 rounded-full"
+                />
               </div>
             </div>
           </Link>
@@ -72,6 +80,11 @@ export const getServerSideProps = async () => {
      name,
      image
     },
+    'comments': *[
+      _type == 'comment' &&
+      post._ref == ^._id &&
+      approved == true
+ ],
     description,
     mainImage,
     slug

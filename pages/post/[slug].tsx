@@ -19,7 +19,7 @@ interface Props {
 }
 
 function Post({ post }: Props) {
-  // console.log(post)
+  console.log(post)
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -97,7 +97,7 @@ function Post({ post }: Props) {
         </div>
       </article>
 
-      <hr className="max-w-lg mx-auto my-5 border border-yellow-500" />
+      <hr className="max-w-lg mx-auto my-5 border border-gray-500" />
 
       {submitted ? (
         <div className="flex flex-col max-w-2xl px-10 py-10 mx-auto my-10 text-white bg-yellow-500">
@@ -111,7 +111,7 @@ function Post({ post }: Props) {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col max-w-2xl p-5 mx-auto mb-10"
         >
-          <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
+          <h3 className="text-sm text-black">Enjoyed this article?</h3>
           <h4 className="text-3xl font-bold">Leave a comment below!</h4>
           <hr className="py-3 mt-2" />
 
@@ -164,10 +164,25 @@ function Post({ post }: Props) {
           </div>
           <input
             type="submit"
-            className="px-4 py-2 font-bold text-white bg-yellow-500 rounded shadow cursor-pointer hover:bg-yellow-400 focus:shadow-outline focus:outline-none"
+            className="px-4 py-2 font-bold text-white bg-black rounded shadow cursor-pointer hover:bg-yellow-400 focus:shadow-outline focus:outline-none"
           />
         </form>
       )}
+      
+       {/* Comment */}
+      <div className='flex flex-col max-w-2xl p-10 mx-auto my-10 rounded-lg shadow-lg shadow-black '>
+          <h3 className='pb-2 text-3xl'>Comments</h3>
+          <hr className='pb-2' />
+         
+         {post.comments.map((comment) =>(
+           <div key={comment._id}>
+             <p>
+             <span className='text-gray-500'> {comment.name} : </span>  {comment.comment}
+             </p>
+           </div>
+         ))}
+
+      </div>
     </main>
   );
 }
