@@ -6,6 +6,7 @@ export interface Post{
         name:string;
         image: string;
     },
+    comments: Comment[];
     description: string;
     mainImage:{
         asset:{
@@ -16,4 +17,5 @@ export interface Post{
         current: string;
     };
     body: [object];
+
 }
