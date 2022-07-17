@@ -10,12 +10,12 @@ function Header() {
         </Link>
 
         <div className="items-center hidden space-x-5 md:inline-flex ">
-              <h3 className="rounded-full cursor-pointer hover:bg-gray-200 ">About</h3>
-              <h3 className="rounded-full cursor-pointer hover:bg-gray-200">Contact</h3>
+        <Link href="/#about"><h3 className="rounded-full cursor-pointer hover:bg-gray-200 ">About</h3></Link>
+        <Link href="/#contact"><h3 className="rounded-full cursor-pointer hover:bg-gray-200">Contact</h3></Link>
           </div>
     </div>
     <div className="flex items-center space-x-5 text-black">
-             <h3 className="px-4 py-1 border border-black rounded-full cursor-pointer">Get Started</h3>
+    <Link href="#posts"><h3 className="px-4 py-1 border border-black rounded-full cursor-pointer">Get Started</h3></Link>
     </div>
     
     </header>

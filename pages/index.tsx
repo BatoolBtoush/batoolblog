@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../components/Header";
+
 import { sanityClient, urlFor } from "../sanity";
 import { Post } from "../typings";
 
@@ -21,7 +22,7 @@ export default function Home({ posts }: Props) {
       </Head>
 
       <Header />
-      <div className="flex items-center justify-between py-10 bg-white border-black border-y lg:py-0">
+      <div className="flex items-center justify-between py-10 bg-white border-black border-y lg:py-0" id='about'>
         <div className="px-10 space-y-5">
           <h1 className="max-w-xl font-serif text-6xl">
             <span className="underline decoration-black decoration-4">
@@ -42,7 +43,7 @@ export default function Home({ posts }: Props) {
       </div>
 
       {/* posts */}
-      <div className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6">
+      <div className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6" id='posts'>
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div className="overflow-hidden border rounded-lg cursor-pointer group">
@@ -68,6 +69,7 @@ export default function Home({ posts }: Props) {
           </Link>
         ))}
       </div>
+
     </div>
   );
 }
