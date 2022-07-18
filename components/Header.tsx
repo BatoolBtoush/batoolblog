@@ -11,7 +11,7 @@ function Header() {
 
         <div className="items-center hidden space-x-5 md:inline-flex ">
         <Link href="/#about"><h3 className="rounded-full cursor-pointer hover:bg-gray-200 ">About</h3></Link>
-        <Link href="/#contact"><h3 className="rounded-full cursor-pointer hover:bg-gray-200">Contact</h3></Link>
+        <Link href="/#contact"><h3 className="rounded-full cursor-pointer hover:bg-gray-200">Contacts</h3></Link>
           </div>
     </div>
     <div className="flex items-center space-x-5 text-black">
