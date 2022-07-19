@@ -5,7 +5,6 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-
 import { sanityClient, urlFor } from "../sanity";
 import { Post } from "../typings";
 
@@ -24,28 +23,29 @@ export default function Home({ posts }: Props) {
       </Head>
 
       <Header />
-      <div className="flex items-center justify-between py-10 bg-white border-black border-y lg:py-0" id='about'>
-        <div className="px-10 space-y-5">
-          <h1 className="max-w-xl font-serif text-6xl">
-            <span className="underline decoration-black decoration-4">
-              BatoolBlog
-            </span>{" "}
-            is a place where Batool writes!
+      <div className="flex items-center justify-between px-10 mx-auto space-y-5 bg-gray-300 rounded max-w-7xl sm:p-10">
+        <div className="">
+          <h1 className="max-w-xl font-sans text-5xl ">
+            <span className="font-serif cursor-pointer">BatoolBlog</span> is a
+            place where Batool writes!
           </h1>
-          <h2 className="pt-5 text-2xl font-medium text-black">
+          <h2 className="pt-5 font-sans text-2xl text-black">
             Join in, you might be interested!{" "}
           </h2>
         </div>
 
-        <img
-          className="hidden object-cover h-32 md:inline-flex lg:h-full"
-          src="https://i.pinimg.com/564x/00/b3/ed/00b3edcff0577a14ca0355e160b02122.jpg"
-          alt=""
-        />
+        <div className="items-center hidden md:inline-flex">
+          <img
+            className="h-auto rounded-lg w-96 "
+            src="https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          />
+        </div>
       </div>
-
       {/* posts */}
-      <div className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6" id='posts'>
+      <div
+        className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 md:p-6"
+        id="posts"
+      >
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div className="overflow-hidden border rounded-lg cursor-pointer group">

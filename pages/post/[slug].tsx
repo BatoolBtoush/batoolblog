@@ -127,7 +127,7 @@ function Post({ post }: Props) {
             <input
               {...register("name", { required: true })}
               className="block w-full px-3 py-2 mt-1 border rounded shadow outline-none form-input ring-yellow-500 focus:ring"
-              placeholder="bat"
+              placeholder="Name"
               type="text"
             />
           </label>
@@ -136,7 +136,7 @@ function Post({ post }: Props) {
             <input
               {...register("email", { required: true })}
               className="block w-full px-3 py-2 mt-1 border rounded shadow outline-none form-input ring-yellow-500 focus:ring"
-              placeholder="bat"
+              placeholder="Email"
               type="email"
             />
           </label>
@@ -145,7 +145,7 @@ function Post({ post }: Props) {
             <textarea
               {...register("comment", { required: true })}
               className="block w-full px-3 py-2 mt-1 border rounded shadow outline-none form-textarea ring-yellow-500 focus:ring"
-              placeholder="bat"
+              placeholder="Comment"
               rows={8}
             />
           </label>
@@ -168,26 +168,28 @@ function Post({ post }: Props) {
           />
         </form>
       )}
-      
-       {/* Comment */}
-      <div className='flex flex-col max-w-2xl p-10 mx-auto my-10 rounded-lg shadow-lg shadow-black '>
-          <h3 className='pb-2 text-3xl'>Comments</h3>
-          <hr className='pb-2' />
-         
-         {post.comments.map((comment) =>(
-           <div key={comment._id}>
-             <p>
-             <span className='text-gray-500'> {comment.name} : </span>  {comment.comment}
-             </p>
-           </div>
-         ))}
 
+      {/* Comment */}
+      <div className="flex flex-col max-w-2xl p-10 mx-auto my-10 rounded-lg shadow-lg shadow-black ">
+        <h3 className="pb-2 text-3xl">Comments</h3>
+        <hr className="pb-2" />
+
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p>
+              <span className="text-gray-500"> {comment.name} : </span>{" "}
+              {comment.comment}
+            </p>
+          </div>
+        ))}
       </div>
     </main>
   );
 }
 
 export default Post;
+
+// Inside [slug].tsx at the bottom
 
 export const getStaticPaths = async () => {
   const query = `*[_type == 'post']{
@@ -199,18 +201,20 @@ export const getStaticPaths = async () => {
 
   const posts = await sanityClient.fetch(query);
 
+  // To figure out the paths and provide them to Next.JS. We provide them within an array whereby each object has a key called params, which would have the actual path inside of it:
+
   const paths = posts.map((post: Post) => ({
-    //this means im going to directly return an object
-    //the first one
+    // This means I'm going to directly return an object
+    // The first one:
     params: {
-      //the second one, is going to be the params that matches up to [slug]
+      // The second one; is going to be the params that matches up to [slug]
       slug: post.slug.current,
     },
   }));
 
   return {
     paths,
-    //this will block the page from showing or show a 404 if it doesn't exist
+    // This will block the page from not showing or showing a 404 if it doesn't exist
     fallback: "blocking",
   };
 };
